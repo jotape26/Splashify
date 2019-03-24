@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (4.8.1)
+  - Presentr (1.9)
+
+DEPENDENCIES:
+  - Alamofire
+  - Presentr
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Presentr
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
+
+PODFILE CHECKSUM: d9d48489ee123e11b3c6a6c85d10501907065ecd
+
+COCOAPODS: 1.5.3
