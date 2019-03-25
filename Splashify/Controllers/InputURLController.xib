@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputURLController" customModule="Splashify" customModuleProvider="target">
+            <connections>
+                <outlet property="btSearch" destination="QNa-sH-8dx" id="bNL-yB-5Ig"/>
+                <outlet property="infoLabel" destination="G3f-7e-Oti" id="Wj2-Qm-JXD"/>
+                <outlet property="txtUrl" destination="0Ty-wN-0uI" id="WQe-rS-Bsb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="229"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ty-wN-0uI">
+                    <rect key="frame" x="8" y="138" width="356" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNa-sH-8dx">
+                    <rect key="frame" x="8" y="188" width="356" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="ocC-TT-dz5"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="searchBtnClicked:" destination="-1" eventType="touchUpInside" id="CR4-OO-RFd"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3f-7e-Oti">
+                    <rect key="frame" x="8" y="8" width="356" height="122"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="G3f-7e-Oti" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="4lC-bb-xFB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QNa-sH-8dx" secondAttribute="bottom" constant="16" id="8fl-bV-756"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QNa-sH-8dx" secondAttribute="trailing" constant="8" id="ANq-2n-87E"/>
+                <constraint firstItem="QNa-sH-8dx" firstAttribute="top" secondItem="0Ty-wN-0uI" secondAttribute="bottom" constant="20" id="FNq-0m-mVm"/>
+                <constraint firstItem="QNa-sH-8dx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="JS6-HX-nSi"/>
+                <constraint firstItem="0Ty-wN-0uI" firstAttribute="top" secondItem="G3f-7e-Oti" secondAttribute="bottom" constant="8" id="NQp-R7-ujG"/>
+                <constraint firstItem="0Ty-wN-0uI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="azT-QH-9kH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Ty-wN-0uI" secondAttribute="trailing" constant="8" id="b8R-PN-CPs"/>
+                <constraint firstItem="G3f-7e-Oti" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="cTr-Pk-jPm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="G3f-7e-Oti" secondAttribute="trailing" constant="8" id="vOg-83-w65"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="136" y="350.37481259370315"/>
+        </view>
+    </objects>
+</document>

@@ -8,11 +8,29 @@
 
 import UIKit
 import Photos
+import Presentr
 
 class ImageGridController: UIViewController {
-
+    
     @IBOutlet weak var imageGrid: UICollectionView!
     var arrImages: [UIImage] = []
+    
+    var presenter : Presentr {
+        let width = ModalSize.full
+        let height = ModalSize.fluid(percentage: 0.30)
+        let center = ModalCenterPosition.bottomCenter
+        let customType = PresentationType.custom(width: width, height: height, center: center)
+        
+        let customPresenter = Presentr(presentationType: customType)
+        customPresenter.transitionType = .coverVerticalFromTop
+        customPresenter.dismissTransitionType = .crossDissolve
+        customPresenter.roundCorners = false
+        customPresenter.backgroundOpacity = 0.5
+        customPresenter.dismissOnSwipe = true
+        customPresenter.dismissOnSwipeDirection = .top
+        customPresenter.keyboardTranslationType = .moveUp
+        return customPresenter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +40,25 @@ class ImageGridController: UIViewController {
         imageGrid.dataSource = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.imageGrid.reloadData()
+    }
+    
     @IBAction func addBtnClicked(_ sender: Any) {
         
-        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
-            PHPhotoLibrary.requestAuthorization { (status) in
-                if status == .authorized {
-                    self.selectImage(sourceType: .photoLibrary)
-                } else {
-                    print("Not Authorized. Allow on settings.")
-                    //TODO MODAL TUTORIAL
-                }
-            }
-        } else if PHPhotoLibrary.authorizationStatus() == .authorized {
-            self.selectImage(sourceType: .photoLibrary)
-        }
+        customPresentViewController(presenter, viewController: InputURLController(), animated: true)
+//        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+//            PHPhotoLibrary.requestAuthorization { (status) in
+//                if status == .authorized {
+//                    self.selectImage(sourceType: .photoLibrary)
+//                } else {
+//                    print("Not Authorized. Allow on settings.")
+//                    //TODO MODAL TUTORIAL
+//                }
+//            }
+//        } else if PHPhotoLibrary.authorizationStatus() == .authorized {
+//            self.selectImage(sourceType: .photoLibrary)
+//        }
     }
     
     func selectImage(sourceType: UIImagePickerController.SourceType) {
@@ -43,6 +66,14 @@ class ImageGridController: UIViewController {
         pickerVC.delegate = self
         pickerVC.sourceType = sourceType
         present(pickerVC, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GridToColorsSegue" {
+            if let vc = segue.destination as? ImageColorsController {
+                vc.selectedImage = arrImages.first!
+            }
+        }
     }
 }
 
@@ -63,7 +94,7 @@ extension ImageGridController: UIImagePickerControllerDelegate, UINavigationCont
         picker.dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             arrImages.insert(image, at: 0)
-            self.imageGrid.reloadData()
+            performSegue(withIdentifier: "GridToColorsSegue", sender: nil)
         }
     }
 }

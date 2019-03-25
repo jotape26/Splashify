@@ -7,6 +7,8 @@ target 'Splashify' do
 
   # Pods for Splashify
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'Presentr'
+  pod 'ObjectMapper'
 
 end

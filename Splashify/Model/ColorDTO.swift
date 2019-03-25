@@ -7,19 +7,21 @@
 //
 
 import Foundation
-import UIKit
+import ObjectMapper
 
-class ColorDTO {
-    var colorName: String
-    var colorHex: UIColor
+class TagsDTO : ImmutableMappable {
+    var tags : [ColorDTO]?
+    required init(map: Map) throws {
+        tags = try? map.value("tags")
+    }
+}
+
+class ColorDTO : ImmutableMappable {
+    var colorName: String?
+    var colorHex: String?
     
-    init(name: String, hex: String) {
-        if let color = UIColor.init(hexString: hex) {
-            self.colorName = name
-            self.colorHex = color
-        } else {
-            self.colorName = "Error parsing color: \(name)"
-            self.colorHex = UIColor.white
-        } 
+    required init(map: Map) {
+        colorHex = try? map.value("color")
+        colorName = try? map.value("label")
     }
 }
