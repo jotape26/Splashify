@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5147A642392BB46B3E0DB4AA /* Pods_Splashify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F21B3CEA4FD8215016089CF8 /* Pods_Splashify.framework */; };
+		FA2319302249C09C00FC02BE /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23192E2249C09C00FC02BE /* PreferencesController.swift */; };
+		FA2319312249C09C00FC02BE /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA23192F2249C09C00FC02BE /* PreferencesController.xib */; };
+		FA2319332249CCA600FC02BE /* ImageDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2319322249CCA600FC02BE /* ImageDAO.swift */; };
 		FA89C92122498F9E00836433 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92022498F9E00836433 /* ImageService.swift */; };
 		FA89C92522499D7600836433 /* SplashifyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92322499D7600836433 /* SplashifyModel.xcdatamodeld */; };
 		FA89C92722499EDB00836433 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92622499EDB00836433 /* CoreDataController.swift */; };
@@ -31,6 +34,9 @@
 		196E7381EDB028C4B3B633CA /* Pods-Splashify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splashify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Splashify/Pods-Splashify.debug.xcconfig"; sourceTree = "<group>"; };
 		D39288FE7C2C88599B0500EC /* Pods-Splashify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splashify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Splashify/Pods-Splashify.release.xcconfig"; sourceTree = "<group>"; };
 		F21B3CEA4FD8215016089CF8 /* Pods_Splashify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Splashify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA23192E2249C09C00FC02BE /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		FA23192F2249C09C00FC02BE /* PreferencesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
+		FA2319322249CCA600FC02BE /* ImageDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDAO.swift; sourceTree = "<group>"; };
 		FA89C92022498F9E00836433 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		FA89C92422499D7600836433 /* SplashifyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SplashifyModel.xcdatamodel; sourceTree = "<group>"; };
 		FA89C92622499EDB00836433 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
@@ -77,6 +83,7 @@
 			children = (
 				FA89C92322499D7600836433 /* SplashifyModel.xcdatamodeld */,
 				FA89C92622499EDB00836433 /* CoreDataController.swift */,
+				FA2319322249CCA600FC02BE /* ImageDAO.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -124,6 +131,8 @@
 				FA8DBD9B2247F9DA0094315B /* ImageColorsController.swift */,
 				FA8DBDA922498E190094315B /* InputURLController.swift */,
 				FA8DBDAA22498E190094315B /* InputURLController.xib */,
+				FA23192E2249C09C00FC02BE /* PreferencesController.swift */,
+				FA23192F2249C09C00FC02BE /* PreferencesController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -224,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2319312249C09C00FC02BE /* PreferencesController.xib in Resources */,
 				FA8DBD8C2247E8350094315B /* LaunchScreen.storyboard in Resources */,
 				FA8DBD892247E8350094315B /* Assets.xcassets in Resources */,
 				FA8DBDAC22498E190094315B /* InputURLController.xib in Resources */,
@@ -300,9 +310,11 @@
 				FA8DBDA52247FF240094315B /* ColorService.swift in Sources */,
 				FA8DBDAB22498E190094315B /* InputURLController.swift in Sources */,
 				FA89C92722499EDB00836433 /* CoreDataController.swift in Sources */,
+				FA2319332249CCA600FC02BE /* ImageDAO.swift in Sources */,
 				FA8DBD822247E8340094315B /* AppDelegate.swift in Sources */,
 				FA89C92122498F9E00836433 /* ImageService.swift in Sources */,
 				FA8DBD9A2247F9260094315B /* Extensions.swift in Sources */,
+				FA2319302249C09C00FC02BE /* PreferencesController.swift in Sources */,
 				FA8DBDA8224804430094315B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

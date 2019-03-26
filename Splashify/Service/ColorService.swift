@@ -16,7 +16,11 @@ class ColorService {
                                success: @escaping ([ColorDTO])->(),
                                error: @escaping ()->()){
         
-        let params : [String: Any] = ["url" : imageURL]
+        var params : [String: Any] = ["url" : imageURL]
+        
+        if let palette = UserDefaults.standard.value(forKey: "selectedPalette") as? String {
+            params.updateValue(palette, forKey: "palette")
+        }
         
         
         Alamofire.request(Constants.Endpoints.urlImageURL,

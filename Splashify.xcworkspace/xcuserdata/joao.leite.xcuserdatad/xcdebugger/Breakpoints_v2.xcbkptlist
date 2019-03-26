@@ -9,14 +9,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Splashify/Controllers/InputURLController.swift"
-            timestampString = "575257822.232621"
+            filePath = "Splashify/Controllers/PreferencesController.swift"
+            timestampString = "575263297.278859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "searchBtnClicked(_:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "paletteDidChange(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Splashify.PreferencesController.paletteDidChange(__C.UISegmentedControl) -&gt; ()"
+                  moduleName = "Splashify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joao.leite/Local/iOS%20Nanodegree/Splashify/Splashify/Controllers/PreferencesController.swift"
+                  timestampString = "575263189.487168"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "37">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Splashify.PreferencesController.paletteDidChange(__C.UISegmentedControl) -&gt; ()"
+                  moduleName = "Splashify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joao.leite/Local/iOS%20Nanodegree/Splashify/Splashify/Controllers/PreferencesController.swift"
+                  timestampString = "575263189.48903"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "174">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -16,19 +16,36 @@ class ImageGridController: UIViewController {
     var arrImages: [Image] = []
     var dataController : CoreDataController!
     
-    var presenter : Presentr {
+    var addNewPresenter : Presentr {
         let width = ModalSize.full
         let height = ModalSize.fluid(percentage: 0.2)
-        let center = ModalCenterPosition.bottomCenter
+        let center = ModalCenterPosition.center
         let customType = PresentationType.custom(width: width, height: height, center: center)
         
         let customPresenter = Presentr(presentationType: customType)
         customPresenter.transitionType = .coverVertical
         customPresenter.dismissTransitionType = .crossDissolve
-        customPresenter.roundCorners = false
+        customPresenter.roundCorners = true
         customPresenter.backgroundOpacity = 0.5
+        customPresenter.blurBackground = true
         customPresenter.dismissOnSwipe = true
         customPresenter.dismissOnSwipeDirection = .top
+        customPresenter.keyboardTranslationType = .moveUp
+        return customPresenter
+    }
+    
+    var preferencesPresenter : Presentr {
+        let width = ModalSize.full
+        let height = ModalSize.fluid(percentage: 0.4)
+        let center = ModalCenterPosition.center
+        let customType = PresentationType.custom(width: width, height: height, center: center)
+        
+        let customPresenter = Presentr(presentationType: customType)
+        customPresenter.transitionType = .coverVertical
+        customPresenter.dismissTransitionType = .crossDissolve
+        customPresenter.roundCorners = true
+        customPresenter.backgroundOpacity = 0.5
+        customPresenter.blurBackground = false
         customPresenter.keyboardTranslationType = .moveUp
         return customPresenter
     }
@@ -46,7 +63,13 @@ class ImageGridController: UIViewController {
     }
     
     @IBAction func addBtnClicked(_ sender: Any) {
-        customPresentViewController(presenter, viewController: InputURLController(), animated: true)
+        addNewPresenter.viewControllerForContext = self
+        customPresentViewController(addNewPresenter, viewController: InputURLController(), animated: true)
+    }
+    
+    @IBAction func parametersClicked(_ sender: Any) {
+        preferencesPresenter.viewControllerForContext = self
+        customPresentViewController(preferencesPresenter, viewController: PreferencesController(), animated: true)
     }
     
     func fetchOldImages(){
@@ -86,8 +109,44 @@ extension ImageGridController: UICollectionViewDelegate, UICollectionViewDataSou
         
         let selectedImage = arrImages[indexPath.row]
         
-        let colorVC = ImageColorsController.create(image: selectedImage)
-        navigationController?.pushViewController(colorVC, animated: true)     
+        if selectedImage.palette == UserDefaults.standard.value(forKey: "selectedPalette") as? String {
+            let colorVC = ImageColorsController.create(image: selectedImage)
+            navigationController?.pushViewController(colorVC, animated: true)
+        } else {
+            
+            let alert = UIAlertController(title: "Different Palettes",
+                                          message: "This image was processed using the \(selectedImage.palette!.capitalized) palette but you currently set to process images using the \((UserDefaults.standard.value(forKey: "selectedPalette") as! String).capitalized) palette.\nWhich palette do you want to see?",
+                preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: selectedImage.palette!.capitalized, style: .default, handler: { (alert) in
+                let colorVC = ImageColorsController.create(image: selectedImage)
+                self.navigationController?.pushViewController(colorVC, animated: true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: (UserDefaults.standard.value(forKey: "selectedPalette") as! String).capitalized, style: .destructive, handler: { (alert) in
+                self.reprocessImage(selectedImage: selectedImage, selectedPalette: UserDefaults.standard.value(forKey: "selectedPalette") as! String)
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func reprocessImage(selectedImage: Image, selectedPalette: String) {
+        ImageDAO.removeColorsFromImage(image: selectedImage)
+        ImageService.downloadImage(url: URL(string: selectedImage.imageURL!)!,
+                                   success: { (image) in
+                                    self.dismiss(animated: true, completion: nil)
+                                    
+                                    ColorService.urlColorSearch(imageURL: selectedImage.imageURL!, success: { (colors) in
+                                        ImageDAO.updateImage(image: selectedImage, palette: selectedPalette, colors: colors)
+                                        let vc = ImageColorsController.create(image: selectedImage)
+                                        UIApplication.shared.keyWindow?.visibleViewController()?.navigationController?.pushViewController(vc, animated: true)
+                                    }, error: {
+                                        print("error downloading colors")
+                                    })
+        }) {
+            print("error downloading image")
+        }
     }
 }
 

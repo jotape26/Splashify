@@ -14,6 +14,7 @@ class InputURLController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var txtUrl: UITextField!
     @IBOutlet weak var btSearch: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +31,8 @@ class InputURLController: UIViewController {
                                             self.dismiss(animated: true, completion: nil)
                                             
                                             ColorService.urlColorSearch(imageURL: txtUrl, success: { (colors) in
-                                                self.saveImageWithColors(downloadedImage: image, colors: colors)
+                                                let vc = ImageColorsController.create(image: ImageDAO.saveImageWithColors(downloadedImage: image, imageUrl: txtUrl, colors: colors))
+                                                UIApplication.shared.keyWindow?.visibleViewController()?.navigationController?.pushViewController(vc, animated: true)
                                             }, error: {
                                                 print("error downloading colors")
                                             })
@@ -39,28 +41,5 @@ class InputURLController: UIViewController {
                 }
             }
         }
-    }
-    
-    func saveImageWithColors(downloadedImage: UIImage, colors: [ColorDTO]){
-        let deg = UIApplication.shared.delegate as! AppDelegate
-        let dataController = deg.dataController
-        
-        let image = Image(context: dataController.viewContext)
-        image.image = downloadedImage.pngData()!
-        image.palette = "simple"
-        
-        var colorsCD : [Color] = []
-        colors.forEach { (colorDto) in
-            let color = Color(context: dataController.viewContext)
-            color.colorHex = colorDto.colorHex
-            color.colorName = colorDto.colorName
-            color.image = image
-            colorsCD.append(color)
-        }
-        
-        try? dataController.viewContext.save()
-        
-        let vc = ImageColorsController.create(image: image, colors: colorsCD)
-        UIApplication.shared.keyWindow?.visibleViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
 }

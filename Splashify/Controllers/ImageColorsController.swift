@@ -26,7 +26,7 @@ class ImageColorsController: UIViewController {
     class func create(image: Image) -> ImageColorsController {
         let colorController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageColorsController") as! ImageColorsController
         colorController.selectedImage = image
-        colorController.fetchColors()
+        colorController.colors = ColorDAO.fetchColors(selectedImage: image)
         return colorController
     }
     
@@ -41,21 +41,6 @@ class ImageColorsController: UIViewController {
         }
     }
     
-    func fetchColors() {
-        let deg = UIApplication.shared.delegate as! AppDelegate
-        let dataController = deg.dataController
-        
-        let request: NSFetchRequest<Color> = Color.fetchRequest()
-        request.predicate = NSPredicate(format: "image = %@", selectedImage)
-        
-        if let result = try? dataController.viewContext.fetch(request) {
-            self.colors = result
-        }
-        
-        if self.colorsTable != nil {
-            self.colorsTable.reloadData()
-        }
-    }
 }
 
 extension ImageColorsController : UITableViewDelegate, UITableViewDataSource {

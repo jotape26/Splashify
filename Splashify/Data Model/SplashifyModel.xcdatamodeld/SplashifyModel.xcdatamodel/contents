@@ -7,11 +7,12 @@
     </entity>
     <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="palette" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="colors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Color" inverseName="image" inverseEntity="Color" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Image" positionX="-3920.80859375" positionY="377.109375" width="128" height="88"/>
+        <element name="Image" positionX="-3920.80859375" positionY="377.109375" width="128" height="103"/>
         <element name="Color" positionX="-3663.3984375" positionY="399.46484375" width="128" height="88"/>
     </elements>
 </model>

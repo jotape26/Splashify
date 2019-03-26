@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Image Grid Controller-->
+        <!--Splashify-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ImageGridController" customModule="Splashify" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,7 +62,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KLk-JM-Ojk">
+                    <navigationItem key="navigationItem" title="Splashify" id="KLk-JM-Ojk">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="O1J-Qd-ahg">
+                            <connections>
+                                <action selector="parametersClicked:" destination="BYZ-38-t0r" id="wZU-5b-3tH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5KD-j7-j2H">
                             <connections>
                                 <action selector="addBtnClicked:" destination="BYZ-38-t0r" id="Rry-Jg-GAL"/>
