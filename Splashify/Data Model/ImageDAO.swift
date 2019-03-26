@@ -18,7 +18,7 @@ class ImageDAO {
         
         let image = Image(context: dataController.viewContext)
         image.image = downloadedImage.pngData()!
-        image.palette = "simple"
+        image.palette = UserDefaults.standard.value(forKey: "selectedPalette") as? String ?? "simple"
         image.imageURL = imageUrl
         
         var colorsCD : [Color] = []

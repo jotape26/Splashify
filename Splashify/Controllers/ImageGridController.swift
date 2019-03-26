@@ -78,7 +78,7 @@ class ImageGridController: UIViewController {
         
         let request: NSFetchRequest<Image> = Image.fetchRequest()
         if let result = try? dataController.viewContext.fetch(request) {
-            self.arrImages = result
+            self.arrImages = result.reversed()
         }
         self.imageGrid.reloadData()
     }
