@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5147A642392BB46B3E0DB4AA /* Pods_Splashify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F21B3CEA4FD8215016089CF8 /* Pods_Splashify.framework */; };
 		FA89C92122498F9E00836433 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92022498F9E00836433 /* ImageService.swift */; };
+		FA89C92522499D7600836433 /* SplashifyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92322499D7600836433 /* SplashifyModel.xcdatamodeld */; };
+		FA89C92722499EDB00836433 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92622499EDB00836433 /* CoreDataController.swift */; };
 		FA8DBD822247E8340094315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DBD812247E8340094315B /* AppDelegate.swift */; };
 		FA8DBD842247E8340094315B /* ImageGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DBD832247E8340094315B /* ImageGridController.swift */; };
 		FA8DBD872247E8340094315B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8DBD852247E8340094315B /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 		D39288FE7C2C88599B0500EC /* Pods-Splashify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Splashify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Splashify/Pods-Splashify.release.xcconfig"; sourceTree = "<group>"; };
 		F21B3CEA4FD8215016089CF8 /* Pods_Splashify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Splashify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA89C92022498F9E00836433 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		FA89C92422499D7600836433 /* SplashifyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SplashifyModel.xcdatamodel; sourceTree = "<group>"; };
+		FA89C92622499EDB00836433 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		FA8DBD7E2247E8340094315B /* Splashify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splashify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8DBD812247E8340094315B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8DBD832247E8340094315B /* ImageGridController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGridController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA89C92222499D4500836433 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA89C92322499D7600836433 /* SplashifyModel.xcdatamodeld */,
+				FA89C92622499EDB00836433 /* CoreDataController.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
 		FA8DBD752247E8340094315B = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +102,7 @@
 		FA8DBD802247E8340094315B /* Splashify */ = {
 			isa = PBXGroup;
 			children = (
+				FA89C92222499D4500836433 /* Data Model */,
 				FA8DBDA62247FF280094315B /* Service */,
 				FA8DBD9E2247FA090094315B /* Model */,
 				FA8DBD9D2247F9E00094315B /* Controllers */,
@@ -280,10 +294,12 @@
 				FA8DBD9C2247F9DA0094315B /* ImageColorsController.swift in Sources */,
 				FA8DBDA32247FDE40094315B /* ColorDTO.swift in Sources */,
 				FA8DBD982247EAB00094315B /* ImageGridCell.swift in Sources */,
+				FA89C92522499D7600836433 /* SplashifyModel.xcdatamodeld in Sources */,
 				FA8DBDA12247FCED0094315B /* ColorTableCell.swift in Sources */,
 				FA8DBD842247E8340094315B /* ImageGridController.swift in Sources */,
 				FA8DBDA52247FF240094315B /* ColorService.swift in Sources */,
 				FA8DBDAB22498E190094315B /* InputURLController.swift in Sources */,
+				FA89C92722499EDB00836433 /* CoreDataController.swift in Sources */,
 				FA8DBD822247E8340094315B /* AppDelegate.swift in Sources */,
 				FA89C92122498F9E00836433 /* ImageService.swift in Sources */,
 				FA8DBD9A2247F9260094315B /* Extensions.swift in Sources */,
@@ -489,6 +505,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA89C92322499D7600836433 /* SplashifyModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA89C92422499D7600836433 /* SplashifyModel.xcdatamodel */,
+			);
+			currentVersion = FA89C92422499D7600836433 /* SplashifyModel.xcdatamodel */;
+			path = SplashifyModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA8DBD762247E8340094315B /* Project object */;
 }

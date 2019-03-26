@@ -7,18 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
 class ImageColorsController: UIViewController {
 
     @IBOutlet weak var colorsTable: UITableView!
     @IBOutlet weak var imageContainer: UIImageView!
-    var selectedImage: UIImage!
-    var colors : [ColorDTO]?
+    var selectedImage: Image!
+    var colors : [Color]?
     
-    class func create(image: UIImage, colors: [ColorDTO]) -> ImageColorsController{
+    class func create(image: Image, colors: [Color]) -> ImageColorsController {
         let colorController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageColorsController") as! ImageColorsController
         colorController.selectedImage = image
         colorController.colors = colors
+        return colorController
+    }
+    
+    class func create(image: Image) -> ImageColorsController {
+        let colorController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageColorsController") as! ImageColorsController
+        colorController.selectedImage = image
+        colorController.fetchColors()
         return colorController
     }
     
@@ -28,7 +36,25 @@ class ImageColorsController: UIViewController {
         // Do any additional setup after loading the view.
         colorsTable.delegate = self
         colorsTable.dataSource = self
-        imageContainer.image = selectedImage
+        if let imageData = selectedImage.image {
+            imageContainer.image = UIImage(data: imageData)!
+        }
+    }
+    
+    func fetchColors() {
+        let deg = UIApplication.shared.delegate as! AppDelegate
+        let dataController = deg.dataController
+        
+        let request: NSFetchRequest<Color> = Color.fetchRequest()
+        request.predicate = NSPredicate(format: "image = %@", selectedImage)
+        
+        if let result = try? dataController.viewContext.fetch(request) {
+            self.colors = result
+        }
+        
+        if self.colorsTable != nil {
+            self.colorsTable.reloadData()
+        }
     }
 }
 
