@@ -49,6 +49,7 @@ class PreferencesController: UIViewController {
         // Do any additional setup after loading the view.
         
         paleteSegment.addTarget(self, action: #selector(paletteDidChange(_:)), for: .valueChanged)
+        paleteSegment.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "SourceSansPro-Regular", size: 17.0)!], for: .normal)
         
         if let selected = UserDefaults.standard.value(forKey: "selectedPalette") as? String{
             let palette = SelectedPalette.build(type: selected)

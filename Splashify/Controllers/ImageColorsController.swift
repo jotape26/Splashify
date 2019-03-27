@@ -14,19 +14,19 @@ class ImageColorsController: UIViewController {
     @IBOutlet weak var colorsTable: UITableView!
     @IBOutlet weak var imageContainer: UIImageView!
     var selectedImage: Image!
-    var colors : [Color]?
+    var arrColors : [Color]?
     
-    class func create(image: Image, colors: [Color]) -> ImageColorsController {
-        let colorController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageColorsController") as! ImageColorsController
-        colorController.selectedImage = image
-        colorController.colors = colors
-        return colorController
-    }
+//    class func create(image: Image, colors: [Color]) -> ImageColorsController {
+//        let colorController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageColorsController") as! ImageColorsController
+//        colorController.selectedImage = image
+//        colorController.arrColors = colors
+//        return colorController
+//    }
     
     class func create(image: Image) -> ImageColorsController {
         let colorController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageColorsController") as! ImageColorsController
         colorController.selectedImage = image
-        colorController.colors = ColorDAO.fetchColors(selectedImage: image)
+        colorController.arrColors = ColorDAO.fetchColors(selectedImage: image)
         return colorController
     }
     
@@ -41,16 +41,20 @@ class ImageColorsController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.tintColor = UIColor(hexString: "#BF5AF2")
+    }
+    
 }
 
 extension ImageColorsController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return colors?.count ?? 0
+        return arrColors?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ColorTableCell") as! ColorTableCell
-        let color = colors![indexPath.row]
+        let color = arrColors![indexPath.row]
         
         if let literalColor = color.colorHex {
             cell.backgroundColor = UIColor(hexString: literalColor)
@@ -68,5 +72,13 @@ extension ImageColorsController : UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vc = ColorPreviewController.create(color: arrColors![indexPath.row])
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
     }
 }

@@ -44,6 +44,9 @@ extension UIColor {
     
 }
 
+// UIWindow Extension from StackOverflow in order to display alerts and push ViewControllers without hassle.
+// https://stackoverflow.com/questions/26667009/get-top-most-uiviewcontroller
+
 public extension UIWindow {
     
     func visibleViewController() -> UIViewController? {

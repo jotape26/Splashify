@@ -11,6 +11,10 @@
 		FA2319302249C09C00FC02BE /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23192E2249C09C00FC02BE /* PreferencesController.swift */; };
 		FA2319312249C09C00FC02BE /* PreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA23192F2249C09C00FC02BE /* PreferencesController.xib */; };
 		FA2319332249CCA600FC02BE /* ImageDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2319322249CCA600FC02BE /* ImageDAO.swift */; };
+		FA231937224B058B00FC02BE /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA231935224B058B00FC02BE /* SourceSansPro-Regular.ttf */; };
+		FA231938224B058B00FC02BE /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA231936224B058B00FC02BE /* Montserrat-Regular.ttf */; };
+		FA23193B224B130000FC02BE /* ColorPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA231939224B130000FC02BE /* ColorPreviewController.swift */; };
+		FA23193C224B130000FC02BE /* ColorPreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA23193A224B130000FC02BE /* ColorPreviewController.xib */; };
 		FA89C92122498F9E00836433 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92022498F9E00836433 /* ImageService.swift */; };
 		FA89C92522499D7600836433 /* SplashifyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92322499D7600836433 /* SplashifyModel.xcdatamodeld */; };
 		FA89C92722499EDB00836433 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89C92622499EDB00836433 /* CoreDataController.swift */; };
@@ -37,6 +41,10 @@
 		FA23192E2249C09C00FC02BE /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
 		FA23192F2249C09C00FC02BE /* PreferencesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesController.xib; sourceTree = "<group>"; };
 		FA2319322249CCA600FC02BE /* ImageDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDAO.swift; sourceTree = "<group>"; };
+		FA231935224B058B00FC02BE /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceSansPro-Regular.ttf"; path = "Pods/Presentr/Presentr/SourceSansPro-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		FA231936224B058B00FC02BE /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "Pods/Presentr/Presentr/Montserrat-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		FA231939224B130000FC02BE /* ColorPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPreviewController.swift; sourceTree = "<group>"; };
+		FA23193A224B130000FC02BE /* ColorPreviewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPreviewController.xib; sourceTree = "<group>"; };
 		FA89C92022498F9E00836433 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		FA89C92422499D7600836433 /* SplashifyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SplashifyModel.xcdatamodel; sourceTree = "<group>"; };
 		FA89C92622499EDB00836433 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
@@ -78,6 +86,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA231934224B057600FC02BE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA231936224B058B00FC02BE /* Montserrat-Regular.ttf */,
+				FA231935224B058B00FC02BE /* SourceSansPro-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		FA89C92222499D4500836433 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +126,7 @@
 		FA8DBD802247E8340094315B /* Splashify */ = {
 			isa = PBXGroup;
 			children = (
+				FA231934224B057600FC02BE /* Fonts */,
 				FA89C92222499D4500836433 /* Data Model */,
 				FA8DBDA62247FF280094315B /* Service */,
 				FA8DBD9E2247FA090094315B /* Model */,
@@ -133,6 +151,8 @@
 				FA8DBDAA22498E190094315B /* InputURLController.xib */,
 				FA23192E2249C09C00FC02BE /* PreferencesController.swift */,
 				FA23192F2249C09C00FC02BE /* PreferencesController.xib */,
+				FA231939224B130000FC02BE /* ColorPreviewController.swift */,
+				FA23193A224B130000FC02BE /* ColorPreviewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -233,11 +253,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA23193C224B130000FC02BE /* ColorPreviewController.xib in Resources */,
 				FA2319312249C09C00FC02BE /* PreferencesController.xib in Resources */,
 				FA8DBD8C2247E8350094315B /* LaunchScreen.storyboard in Resources */,
+				FA231938224B058B00FC02BE /* Montserrat-Regular.ttf in Resources */,
 				FA8DBD892247E8350094315B /* Assets.xcassets in Resources */,
 				FA8DBDAC22498E190094315B /* InputURLController.xib in Resources */,
 				FA8DBD872247E8340094315B /* Main.storyboard in Resources */,
+				FA231937224B058B00FC02BE /* SourceSansPro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +336,7 @@
 				FA2319332249CCA600FC02BE /* ImageDAO.swift in Sources */,
 				FA8DBD822247E8340094315B /* AppDelegate.swift in Sources */,
 				FA89C92122498F9E00836433 /* ImageService.swift in Sources */,
+				FA23193B224B130000FC02BE /* ColorPreviewController.swift in Sources */,
 				FA8DBD9A2247F9260094315B /* Extensions.swift in Sources */,
 				FA2319302249C09C00FC02BE /* PreferencesController.swift in Sources */,
 				FA8DBDA8224804430094315B /* Constants.swift in Sources */,

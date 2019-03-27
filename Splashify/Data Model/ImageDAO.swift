@@ -34,6 +34,30 @@ class ImageDAO {
         return image
     }
     
+    static func retrieveImages() -> [Image] {
+        let deg = UIApplication.shared.delegate as! AppDelegate
+        let dataController = deg.dataController
+        
+        let request: NSFetchRequest<Image> = Image.fetchRequest()
+        if let result = try? dataController.viewContext.fetch(request) {
+            return result.reversed()
+        }
+        return []
+    }
+    
+    static func deleteImage(image: Image) -> Bool{
+        let deg = UIApplication.shared.delegate as! AppDelegate
+        let dataController = deg.dataController
+        
+        dataController.viewContext.delete(image)
+        do{
+            try dataController.viewContext.save()
+        } catch {
+            return false
+        }
+        return true
+    }
+    
     static func removeColorsFromImage(image: Image){
         let deg = UIApplication.shared.delegate as! AppDelegate
         let dataController = deg.dataController

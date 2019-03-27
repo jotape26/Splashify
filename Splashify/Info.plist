@@ -38,6 +38,11 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) need access to your gallery to pick images to use.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SourceSansPro-Regular</string>
+		<string>Montserrat-Regular</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

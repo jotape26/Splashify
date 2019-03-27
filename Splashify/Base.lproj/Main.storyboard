@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Regular.ttf">
+            <string>SourceSansPro-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Splashify-->
         <scene sceneID="tne-QT-ifu">
@@ -19,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qfH-fs-1fa">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z4j-fG-n9i">
                                     <size key="itemSize" width="116" height="106"/>
@@ -55,7 +60,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qfH-fs-1fa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6se-ye-jq2"/>
+                            <constraint firstItem="qfH-fs-1fa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="6se-ye-jq2"/>
                             <constraint firstItem="qfH-fs-1fa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="A9c-tr-dwT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qfH-fs-1fa" secondAttribute="trailing" id="O1w-vj-koD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qfH-fs-1fa" secondAttribute="bottom" id="v3S-z3-Xmr"/>
@@ -63,12 +68,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Splashify" id="KLk-JM-Ojk">
+                        <barButtonItem key="backBarButtonItem" title=" " id="T5H-XJ-b27"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="O1J-Qd-ahg">
+                            <color key="tintColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="parametersClicked:" destination="BYZ-38-t0r" id="wZU-5b-3tH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5KD-j7-j2H">
+                            <color key="tintColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="addBtnClicked:" destination="BYZ-38-t0r" id="Rry-Jg-GAL"/>
                             </connections>
@@ -103,8 +111,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Os4-05-2yx">
-                                                    <rect key="frame" x="166.5" y="15" width="42" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="164.5" y="15" width="46.5" height="22"/>
+                                                    <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

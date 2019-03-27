@@ -17,8 +17,8 @@ class ImageGridController: UIViewController {
     var dataController : CoreDataController!
     
     var addNewPresenter : Presentr {
-        let width = ModalSize.full
-        let height = ModalSize.fluid(percentage: 0.2)
+        let width = ModalSize.fluid(percentage: 0.9)
+        let height = ModalSize.fluid(percentage: 0.25)
         let center = ModalCenterPosition.center
         let customType = PresentationType.custom(width: width, height: height, center: center)
         
@@ -35,7 +35,7 @@ class ImageGridController: UIViewController {
     }
     
     var preferencesPresenter : Presentr {
-        let width = ModalSize.full
+        let width = ModalSize.fluid(percentage: 0.9)
         let height = ModalSize.fluid(percentage: 0.4)
         let center = ModalCenterPosition.center
         let customType = PresentationType.custom(width: width, height: height, center: center)
@@ -50,12 +50,22 @@ class ImageGridController: UIViewController {
         return customPresenter
     }
     
+    var alertPresenter: Presentr {
+        let presenter = Presentr(presentationType: .alert)
+        presenter.viewControllerForContext = self
+        presenter.presentationType = .alert
+        return presenter
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         imageGrid.delegate = self
         imageGrid.dataSource = self
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 17.0)!]
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,22 +83,29 @@ class ImageGridController: UIViewController {
     }
     
     func fetchOldImages(){
-        let deg = UIApplication.shared.delegate as! AppDelegate
-        self.dataController = deg.dataController
-        
-        let request: NSFetchRequest<Image> = Image.fetchRequest()
-        if let result = try? dataController.viewContext.fetch(request) {
-            self.arrImages = result.reversed()
-        }
+        self.arrImages = ImageDAO.retrieveImages()
         self.imageGrid.reloadData()
     }
-    
-//    func selectImage(sourceType: UIImagePickerController.SourceType) {
-//        let pickerVC = UIImagePickerController()
-//        pickerVC.delegate = self
-//        pickerVC.sourceType = sourceType
-//        present(pickerVC, animated: true, completion: nil)
-//    }
+    @objc func deleteLongPress(_ gesture: UILongPressGestureRecognizer) {
+        let alertViewController = AlertViewController(title: "Delete Image", body: "Do you want to delete this image?")
+        
+        let deleteAction = AlertAction(title: "Yes", style: .custom(textColor: .red)) {
+            if let tag = gesture.view?.tag {
+                if ImageDAO.deleteImage(image: self.arrImages[tag]) {
+                    self.fetchOldImages()
+                }
+            }
+        }
+        
+        let okAction = AlertAction(title: "No", style: .default) {
+            print("No Action Required!")
+        }
+        
+        alertViewController.addAction(okAction)
+        alertViewController.addAction(deleteAction)
+        
+        customPresentViewController(alertPresenter, viewController: alertViewController, animated: true, completion: nil)
+    }
 }
 
 extension ImageGridController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -101,6 +118,11 @@ extension ImageGridController: UICollectionViewDelegate, UICollectionViewDataSou
         if let imageData = arrImages[indexPath.row].image {
             cell.image.image = UIImage(data: imageData)!
         }
+        
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(deleteLongPress(_:)))
+        cell.addGestureRecognizer(gesture)
+        gesture.view?.tag = indexPath.row
+        
         return cell
     }
     
@@ -114,20 +136,23 @@ extension ImageGridController: UICollectionViewDelegate, UICollectionViewDataSou
             navigationController?.pushViewController(colorVC, animated: true)
         } else {
             
-            let alert = UIAlertController(title: "Different Palettes",
-                                          message: "This image was processed using the \(selectedImage.palette!.capitalized) palette but you currently set to process images using the \((UserDefaults.standard.value(forKey: "selectedPalette") as! String).capitalized) palette.\nWhich palette do you want to see?",
-                preferredStyle: .alert)
+            let alertViewController = AlertViewController(title: "Different Palettes",
+                                                          body: "Your current palette is different from the one used to process this image.\nWhich palette do you want to use?")
             
-            alert.addAction(UIAlertAction(title: selectedImage.palette!.capitalized, style: .default, handler: { (alert) in
+            let oldPaletteAction = AlertAction(title: selectedImage.palette!.capitalized, style: .custom(textColor: .red)) {
+                alertViewController.dismiss(animated: true, completion: nil)
                 let colorVC = ImageColorsController.create(image: selectedImage)
                 self.navigationController?.pushViewController(colorVC, animated: true)
-            }))
+            }
             
-            alert.addAction(UIAlertAction(title: (UserDefaults.standard.value(forKey: "selectedPalette") as! String).capitalized, style: .destructive, handler: { (alert) in
+            let currentPaletteAction = AlertAction(title: (UserDefaults.standard.value(forKey: "selectedPalette") as! String).capitalized, style: .default) {
                 self.reprocessImage(selectedImage: selectedImage, selectedPalette: UserDefaults.standard.value(forKey: "selectedPalette") as! String)
-            }))
+            }
             
-            present(alert, animated: true, completion: nil)
+            alertViewController.addAction(oldPaletteAction)
+            alertViewController.addAction(currentPaletteAction)
+            
+            customPresentViewController(alertPresenter, viewController: alertViewController, animated: true, completion: nil)
         }
     }
     
