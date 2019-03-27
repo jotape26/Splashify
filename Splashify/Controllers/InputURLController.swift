@@ -66,6 +66,8 @@ class InputURLController: UIViewController {
                 }) {
                     self.showError(message: "Error downloading the Image. \nPlease check the URL and your internet connection and try again")
                 }
+            } else {
+                self.showError(message: "Invalid image URL. \n Please check the URL and try again.")
             }
         }
     }
@@ -84,6 +86,7 @@ class InputURLController: UIViewController {
                     self.dialogView.backgroundColor = .white
                 }, completion: { _ in
                     self.dialogView.isHidden = true
+                    self.txtUrl.text = ""
                 })
             })
         }
