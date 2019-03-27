@@ -16,13 +16,6 @@ class ImageColorsController: UIViewController {
     var selectedImage: Image!
     var arrColors : [Color]?
     
-//    class func create(image: Image, colors: [Color]) -> ImageColorsController {
-//        let colorController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageColorsController") as! ImageColorsController
-//        colorController.selectedImage = image
-//        colorController.arrColors = colors
-//        return colorController
-//    }
-    
     class func create(image: Image) -> ImageColorsController {
         let colorController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageColorsController") as! ImageColorsController
         colorController.selectedImage = image

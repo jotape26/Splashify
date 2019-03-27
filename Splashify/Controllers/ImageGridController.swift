@@ -97,7 +97,7 @@ class ImageGridController: UIViewController {
             }
         }
         
-        let okAction = AlertAction(title: "No", style: .default) {
+        let okAction = AlertAction(title: "No", style: .custom(textColor: UIColor(hexString: "#BF5AF2"))) {
             print("No Action Required!")
         }
         
@@ -145,7 +145,7 @@ extension ImageGridController: UICollectionViewDelegate, UICollectionViewDataSou
                 self.navigationController?.pushViewController(colorVC, animated: true)
             }
             
-            let currentPaletteAction = AlertAction(title: (UserDefaults.standard.value(forKey: "selectedPalette") as! String).capitalized, style: .default) {
+            let currentPaletteAction = AlertAction(title: (UserDefaults.standard.value(forKey: "selectedPalette") as! String).capitalized, style: .custom(textColor: UIColor(hexString: "#BF5AF2"))) {
                 self.reprocessImage(selectedImage: selectedImage, selectedPalette: UserDefaults.standard.value(forKey: "selectedPalette") as! String)
             }
             
@@ -174,16 +174,4 @@ extension ImageGridController: UICollectionViewDelegate, UICollectionViewDataSou
         }
     }
 }
-
-//extension ImageGridController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        picker.dismiss(animated: true, completion: nil)
-//        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-//            arrImages.insert(image, at: 0)
-//            performSegue(withIdentifier: "GridToColorsSegue", sender: nil)
-//        }
-//    }
-//}
-
-extension ImageGridController: UICollectionViewDelegateFlowLayout {}
 

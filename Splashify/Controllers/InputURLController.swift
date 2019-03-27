@@ -32,8 +32,8 @@ class InputURLController: UIViewController {
         
         let blurredEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         blurredEffectView.frame = dialogView.bounds
-        dialogView.layer.cornerRadius = self.view.layer.cornerRadius
-        blurredEffectView.layer.cornerRadius = self.view.layer.cornerRadius
+        dialogView.layer.cornerRadius = 4.0
+        blurredEffectView.layer.cornerRadius = 4.0
         dialogView.addSubview(blurredEffectView)
         dialogView.sendSubviewToBack(blurredEffectView)
     }
